@@ -1,0 +1,18 @@
+[
+  {
+    "type": "cb_new",
+    "bank": "",
+    "value": "",
+    "created": "2026-04-01T20:04:33.356651+00:00",
+    "triggered": false,
+    "message": "cb_new: "
+  },
+  {
+    "type": "cal_high",
+    "bank": "",
+    "value": "",
+    "created": "2026-04-02T16:02:13.534468+00:00",
+    "triggered": false,
+    "message": "cal_high: "
+  }
+]

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KMCO Terminal</title>
+<link rel="stylesheet" href="/static/css/terminal.css?v=20260402h">
+<link rel="stylesheet" href="/static/css/layout.css?v=20260402c">
+</head>
+<body>
+
+<div id="app">
+  <!-- HEADER -->
+  <header id="header">
+    <div class="logo">
+      <span class="diamond">&#9670;</span>
+      <span>KMCO TERMINAL</span>
+    </div>
+    <div class="bank-pills" id="bankPills"></div>
+    <div class="clock-block">
+      <div class="live-dot" id="liveDot"></div>
+      <span class="clock" id="clock">--:--:--</span>
+      <span class="date" id="dateDisp">---</span>
+    </div>
+  </header>
+
+  <!-- NAV BAR -->
+  <nav id="navBar">
+    <div class="nav-tabs" id="navTabs"></div>
+    <div class="nav-cmd">
+      <label class="cmd-label">GO</label>
+      <input type="text" id="cmdInput" class="cmd-input" placeholder="Type screen name..." autocomplete="off" spellcheck="false">
+    </div>
+  </nav>
+
+  <!-- TICKER -->
+  <div id="ticker">
+    <div class="label">BREAKING</div>
+    <div class="track" id="tickerTrack"></div>
+  </div>
+
+  <!-- SCREEN CONTAINER -->
+  <div id="screenContainer"></div>
+
+  <!-- STATUS BAR -->
+  <div id="statusbar">
+    <div class="left">
+      <div class="indicator connected" id="connIndicator">
+        <span class="dot"></span>
+        <span id="connLabel">Connected</span>
+      </div>
+      <span id="statusArticles">--</span>
+      <span id="statusEvents">--</span>
+      <span id="statusCal">--</span>
+      <span id="statusMarkets">--</span>
+    </div>
+    <div class="right">
+      <span id="lastRefresh">Last refresh: --</span>
+      <span id="statusFeeds">--</span>
+      <span>KMCO Terminal v4.0 LIVE</span>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/lightweight-charts@3.8.0/dist/lightweight-charts.standalone.production.js"></script>
+<script src="/static/js/config.js?v=20260402h"></script>
+<script src="/static/js/utils.js?v=20260402h"></script>
+<script src="/static/js/chartDefaults.js?v=20260402c"></script>
+<script src="/static/js/renderers.js?v=20260402c"></script>
+<script src="/static/js/router.js?v=20260402h"></script>
+<script src="/static/js/windows/home.js?v=20260402c"></script>
+<script src="/static/js/windows/wire.js?v=20260402h"></script>
+<script src="/static/js/windows/cenb.js?v=20260402h"></script>
+<script src="/static/js/windows/ecfc.js?v=20260402h"></script>
+<script src="/static/js/windows/mktm.js?v=20260402f"></script>
+<script src="/static/js/windows/fxdash.js?v=20260402f"></script>
+<script src="/static/js/windows/signals.js?v=20260402b"></script>
+<script src="/static/js/windows/pricein.js?v=20260402b"></script>
+<script src="/static/js/windows/intel.js?v=20260402b"></script>
+<script src="/static/js/windows/alert.js?v=20260402b"></script>
+<script src="/static/js/windows/risk.js?v=20260402e"></script>
+<script src="/static/js/windows/yields.js?v=20260402g"></script>
+<script src="/static/js/app.js?v=20260402g"></script>
+</body>
+</html>
