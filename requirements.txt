@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+requests
+feedparser
+PyYAML
+python-dateutil
+yfinance
+ib_insync
+pytest

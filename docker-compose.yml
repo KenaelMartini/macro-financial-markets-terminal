@@ -1,0 +1,24 @@
+services:
+  terminal:
+    build:
+      context: ./Terminal
+      dockerfile: Dockerfile
+    ports:
+      - "8800:8800"
+    volumes:
+      - terminal_sqlite:/data/terminal
+    environment:
+      TERMINAL_SQLITE: "1"
+      TERMINAL_SQLITE_PATH: "/data/terminal/terminal.db"
+      TERMINAL_CB_DIR: "${TERMINAL_CB_DIR:-/data/cb}"
+      TERMINAL_NEWS_DIR: "${TERMINAL_NEWS_DIR:-/data/news}"
+      FRED_API_KEY: "${FRED_API_KEY:-}"
+      TERMINAL_ENABLE_AUTH: "${TERMINAL_ENABLE_AUTH:-0}"
+      TERMINAL_API_KEY: "${TERMINAL_API_KEY:-}"
+      TERMINAL_AUTH_USER: "${TERMINAL_AUTH_USER:-terminal}"
+      TERMINAL_AUTH_PASSWORD: "${TERMINAL_AUTH_PASSWORD:-}"
+      IBKR_HOST: "${IBKR_HOST:-host.docker.internal}"
+      IBKR_PORT: "${IBKR_PORT:-7497}"
+
+volumes:
+  terminal_sqlite:

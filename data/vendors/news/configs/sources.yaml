@@ -1,0 +1,6 @@
+feeds:
+  - https://news.google.com/rss/search?q=site:reuters.com+markets
+  - https://news.google.com/rss/search?q=site:reuters.com+central+bank
+  - https://news.google.com/rss/search?q=site:bloomberg.com+markets
+  - https://feeds.a.dj.com/rss/RSSMarketsMain.xml
+  - https://feeds.bbci.co.uk/news/business/rss.xml
