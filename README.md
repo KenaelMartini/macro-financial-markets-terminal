@@ -1,92 +1,154 @@
 # Macro & Financial Markets Terminal
 
-Python-based research terminal designed to centralise macroeconomic information, market data, central-bank publications, financial news and research tools within a single interface.
+A Python-based research terminal that centralises macroeconomic information, central-bank publications, financial news, market data and risk-analysis tools in a single web interface.
 
-This project is part of a broader research workflow focused on macroeconomic analysis, central-bank monitoring, FX markets and quantitative financial research.
+The project is designed as a modular research environment for studying monetary policy, FX markets, economic events and cross-asset dynamics. It is under active development.
 
-## Objective
+## Core capabilities
 
-The objective of this project is to build a unified research environment for financial markets analysis.
-
-The terminal is designed to help structure and monitor information from multiple sources, including:
-
-- central-bank publications;
-- macroeconomic calendars;
-- financial news;
-- market data;
-- historical events;
-- internal research notes;
-- quantitative analysis modules.
-
-The project is developed for research and educational purposes. It does not provide trading signals or investment advice.
-
-## Main features
-
-Current and planned modules include:
-
-- central-bank publication monitoring;
-- macroeconomic calendar tracking;
-- financial news aggregation;
-- market data visualisation;
-- structured event logging;
-- historical data storage;
-- market brief generation;
-- research workflow centralisation.
+- Monitoring of publications from major central banks
+- Macroeconomic calendar collection and normalisation
+- Financial-news aggregation
+- Live and historical market data through Interactive Brokers
+- OHLC market charts across multiple intervals and periods
+- Central-bank tone analysis using a transparent lexical approach
+- Historical storage of news, calendar events, market snapshots and NLP scores
+- Configurable alerts for central-bank updates and news keywords
+- Risk dashboard with VaR and CVaR calculations
+- Market signals, price-in analysis and structured market briefs
+- REST API, WebSocket updates and supervised background workers
+- Optional API-key or HTTP Basic authentication
+- Health monitoring for data paths, workers and SQLite persistence
 
 ## Architecture
 
-The project follows a modular structure built around several components:
+The application is organised into independent modules:
 
-- data collectors for external sources;
-- background workers for monitoring and scheduled tasks;
-- analysis components for processing and classification;
-- a database layer for storing historical information;
-- a web interface for displaying market and macroeconomic information.
+```text
+Terminal/
+├── app.py                 # FastAPI application and worker startup
+├── routes.py              # REST API and WebSocket endpoints
+├── config.py              # Paths, refresh intervals and environment settings
+├── alerts/                # Alert storage and evaluation
+├── analysis/              # Tone, signals, price-in, reports and risk metrics
+├── scrapers/              # News, calendar, central-bank and IBKR collectors
+├── storage/               # SQLite persistence layer
+├── workers/               # Supervised background workers
+├── static/                # Front-end assets
+├── templates/             # Web interface
+├── data/                  # Local application data
+├── requirements.txt
+└── Dockerfile
+```
 
-This architecture is intended to make the system easier to extend as new data sources, dashboards and research tools are added.
+## Technology stack
 
-## Technologies
-
-Core technologies used or planned in this project:
-
-- Python
-- FastAPI
+- Python 3.12
+- FastAPI and Uvicorn
 - SQLite
-- HTML / CSS / JavaScript
-- Requests
-- BeautifulSoup
-- pandas
-- APIs and web scraping
+- HTML, CSS and JavaScript
+- Requests and Feedparser
+- PyYAML and python-dateutil
+- Interactive Brokers via `ib_insync`
+- `yfinance` for selected non-live data workflows
+- Docker
 
-## Research areas covered
+## Data and research scope
 
-The terminal is designed around the following research areas:
+The terminal is built around:
 
-- monetary policy;
-- central-bank communication;
-- inflation and labour-market data;
-- economic growth indicators;
-- FX markets;
-- cross-asset relationships;
+- monetary policy and central-bank communication;
+- inflation, labour-market and growth indicators;
+- FX and cross-asset market dynamics;
 - macroeconomic event monitoring;
-- quantitative market analysis.
+- historical event comparison;
+- quantitative risk and market analysis.
+
+## Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/KenaelMartini/Terminal.git
+cd Terminal
+```
+
+### 2. Create a virtual environment
+
+```bash
+python -m venv .venv
+```
+
+Activate it:
+
+```bash
+# Windows
+.venv\Scripts\activate
+
+# macOS / Linux
+source .venv/bin/activate
+```
+
+### 3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configure local paths and credentials
+
+The application uses environment variables and settings defined in `config.py` for data directories, authentication and external integrations.
+
+Interactive Brokers market data requires a running Trader Workstation or IB Gateway session with the appropriate API settings enabled.
+
+Do not commit API keys, account credentials or private configuration files.
+
+### 5. Run the application
+
+```bash
+python app.py
+```
+
+The interface is then available at:
+
+```text
+http://127.0.0.1:8800
+```
+
+A health endpoint is available at:
+
+```text
+http://127.0.0.1:8800/health
+```
+
+## Docker
+
+```bash
+docker build -t macro-markets-terminal .
+docker run --rm -p 8800:8800 macro-markets-terminal
+```
+
+Persistent data should be mounted to the directory configured through `TERMINAL_DATA_DIR`.
 
 ## Current status
 
-The project is under active development. The current focus is on building a stable technical foundation, improving data collection, organising the interface and documenting the research workflow.
+The application already includes working collection, storage, API and interface modules. Current priorities are:
 
-Future improvements may include:
+- improving source reliability and error handling;
+- expanding automated tests;
+- strengthening documentation and reproducibility;
+- improving interface clarity;
+- validating analytical outputs on larger historical samples;
+- separating experimental modules from production-ready components.
 
-- cleaner dashboard views;
-- stronger database structure;
-- improved source reliability;
-- broader macroeconomic coverage;
-- better historical event comparison;
-- portfolio and backtesting modules;
-- automated report generation.
+## Limitations
+
+- Some modules depend on local companion projects or configured data directories.
+- Live and historical market data depend on an active Interactive Brokers connection.
+- Central-bank tone analysis is lexical and should not be interpreted as market-implied pricing.
+- Data availability and refresh frequency depend on third-party sources.
+- Analytical outputs remain research tools and require independent validation.
 
 ## Disclaimer
 
-This repository is developed for independent research and educational purposes only.
-
-Nothing in this project constitutes financial advice, investment recommendation, portfolio management or a regulated financial service.
+This repository is developed for independent research and educational purposes only. Nothing in this project constitutes financial advice, an investment recommendation, portfolio management or a regulated financial service.
